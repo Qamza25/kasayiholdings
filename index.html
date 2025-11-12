@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasayi Holdings | Construction & Infrastructure Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #e6a23c;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #0d3a73;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: left;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 180px 0 120px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .strengths {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .strength-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .strength-item i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .about-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card h3 i {
+            color: var(--secondary);
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-list li:before {
+            content: '•';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        .services-button {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Why Choose Us Section */
+        .why-us {
+            background-color: var(--light);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .feature-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects {
+            text-align: center;
+        }
+
+        .projects-placeholder {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 80px 20px;
+            margin-top: 30px;
+        }
+
+        .projects-placeholder i {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .projects-placeholder h3 {
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .contact h2:after {
+            background-color: var(--secondary);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+
+        .footer-logo .logo-text {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .strengths {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Kasayi Holdings (Pty) Ltd</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Choose Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/logo.png" alt="Profile photo"
+                    class="w-40 h-40 rounded-full shadow-lg mb-6 mx-auto animate-float border-4 border-white">
+                <h1>Building with Integrity. Delivering with Excellence.</h1>
+                <p>Kasayi Holdings is a trusted construction and infrastructure development company based in Port
+                    Elizabeth, Eastern Cape. We provide high-quality building solutions backed by professional
+                    workmanship and reliable project management.</p>
+                <div class="hero-buttons">
+                    <a href="https://drive.google.com/file/d/1K70VkEYd_wQdzy_K7BkL7qkBtuTcmrUS/view?usp=sharing"
+                        class="btn btn-primary">View Documents</a>
+                    <a href="#services" class="btn btn-secondary">View Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Who We Are</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Kasayi Holdings specializes in residential, commercial, and civil construction projects. With a
+                        focus on structural quality, safety, and service excellence, we work collaboratively with
+                        clients to deliver projects that meet expectations and comply with all building standards.</p>
+
+                    <h3>Key Strengths:</h3>
+                    <div class="strengths">
+                        <div class="strength-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Professional and skilled workforce</div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Quality materials and reliable suppliers</div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>On-time project execution</div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Transparent communication</div>
+                        </div>
+                    </div>
+
+                    <div class="about-button">
+                        <a href="#" class="btn btn-primary">Learn More About Us</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                        alt="Construction Site">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-building"></i> Construction</h3>
+                    <ul class="service-list">
+                        <li>Residential Building</li>
+                        <li>Commercial Building</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-road"></i> Civil Works</h3>
+                    <ul class="service-list">
+                        <li>Roads</li>
+                        <li>Paving</li>
+                        <li>Drainage</li>
+                        <li>Foundations</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-home"></i> Improvements</h3>
+                    <ul class="service-list">
+                        <li>Renovations</li>
+                        <li>Alterations</li>
+                        <li>Extensions</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-bolt"></i> Technical Systems</h3>
+                    <ul class="service-list">
+                        <li>Electrical</li>
+                        <li>Plumbing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-shield-alt"></i> Structural Protection</h3>
+                    <ul class="service-list">
+                        <li>Roofing</li>
+                        <li>Waterproofing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-paint-roller"></i> Finishing</h3>
+                    <ul class="service-list">
+                        <li>Painting</li>
+                        <li>Interior Works</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-clipboard-list"></i> Oversight</h3>
+                    <ul class="service-list">
+                        <li>Project Management</li>
+                        <li>Site Supervision</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-truck-loading"></i> Supply</h3>
+                    <ul class="service-list">
+                        <li>Building Materials Distribution</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">We Stand Out Because:</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality Workmanship</h3>
+                    <p>Commitment to quality in every project</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety Standards</h3>
+                    <p>Strong safety and compliance standards</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Fair Pricing</h3>
+                    <p>Transparent and competitive pricing</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Focus</h3>
+                    <p>Local empowerment and job creation</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Project Monitoring</h3>
+                    <p>Reliable reporting and oversight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Our Projects</h2>
+            <div class="projects-placeholder">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Project Showcase Coming Soon</h3>
+                <p>We're preparing to highlight our completed and in-progress projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>Ready to start your construction project? Contact us today for a consultation or quote.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>+27 71 950 8360</div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>admin.kasayiholding@gmail.com</div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>25 Cefane St, nu 4, Motherwell, Port Elizabeth, 6211</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-text">Kasayi Holdings</div>
+                    <p>Building with integrity. Delivering with excellence.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Construction</a></li>
+                            <li><a href="#">Civil Works</a></li>
+                            <li><a href="#">Renovations</a></li>
+                            <li><a href="#">Project Management</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kasayi Holdings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+
+            mobileMenu.addEventListener('click', function () {
+                navMenu.classList.toggle('show');
+            });
+
+            // Dynamic Background Shapes
+            const container = document.getElementById('background-container');
+            const shapesCount = 15;
+            const colors = [
+                'rgba(13, 71, 161, 0.1)', // Primary blue
+                'rgba(26, 35, 126, 0.1)', // Dark blue
+                'rgba(255, 109, 0, 0.1)', // Orange
+                'rgba(255, 145, 0, 0.1)', // Light orange
+                'rgba(227, 242, 253, 0.1)' // Light blue
+            ];
+
+            // Create shapes
+            for (let i = 0; i < shapesCount; i++) {
+                createShape();
+            }
+
+            function createShape() {
+                const shape = document.createElement('div');
+                shape.classList.add('shape');
+
+                // Randomly select shape type
+                const shapeTypes = ['circle', 'triangle', 'square', 'hexagon'];
+                const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+
+                // Set shape properties based on type
+                const size = Math.random() * 120 + 40; // Size between 40 and 160px
+
+                shape.classList.add(shapeType);
+
+                if (shapeType === 'circle') {
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.background = colors[Math.floor(Math.random() * colors.length)];
+                } else if (shapeType === 'triangle') {
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    shape.style.borderWidth = `0 ${size / 2}px ${size}px ${size / 2}px`;
+                    shape.style.borderColor = `transparent transparent ${color} transparent`;
+                } else if (shapeType === 'square') {
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.background = colors[Math.floor(Math.random() * colors.length)];
+                } else if (shapeType === 'hexagon') {
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.background = colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                // Random position
+                shape.style.left = `${Math.random() * 100}%`;
+                shape.style.top = `${Math.random() * 100}%`;
+
+                container.appendChild(shape);
+
+                // Animate the shape
+                animateShape(shape);
+            }
+
+            function animateShape(shape) {
+                // Random movement parameters
+                const duration = Math.random() * 40 + 20; // 20-60 seconds
+                const xMovement = (Math.random() - 0.5) * 100; // -50 to 50 vw
+                const yMovement = (Math.random() - 0.5) * 100; // -50 to 50 vh
+                const rotation = (Math.random() - 0.5) * 360; // -180 to 180 degrees
+
+                // Apply animation
+                shape.style.transition = `all ${duration}s linear`;
+                shape.style.transform = `translate(${xMovement}vw, ${yMovement}vh) rotate(${rotation}deg)`;
+
+                // When animation completes, reset and restart
+                setTimeout(() => {
+                    shape.style.transition = 'none';
+                    shape.style.transform = 'translate(0, 0) rotate(0deg)';
+
+                    // Force reflow
+                    void shape.offsetWidth;
+
+                    // Restart animation
+                    animateShape(shape);
+                }, duration * 1000);
+            }
+
+            // Add interactivity - shapes react to mouse movement
+            document.addEventListener('mousemove', (e) => {
+                const shapes = document.querySelectorAll('.shape');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                shapes.forEach(shape => {
+                    const speed = 0.02; // Adjust this value to control sensitivity
+                    const x = (mouseX - 0.5) * speed * 100;
+                    const y = (mouseY - 0.5) * speed * 100;
+
+                    shape.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
